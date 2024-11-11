@@ -20,6 +20,10 @@ async function bootstrap() {
   });
 
   app.enableCors();
+  app.use((req, res, next) => {
+    res.setHeader("Content-Security-Policy", "script-src 'self' 'unsafe-eval' https://ff.kis.v2.scr.kaspersky-labs.com wss://ff.kis.v2.scr.kaspersky-labs.com");
+    next();
+  });
 
   // Validation Pipes
   app.useGlobalPipes(new ValidationPipe());
