@@ -19,12 +19,6 @@ async function bootstrap() {
     logger: env === 'development'? ['log','debug', 'error', 'verbose', 'warn'] : ['error','warn']
   });
 
-  app.enableCors();
-  app.use((req, res, next) => {
-    res.setHeader("Content-Security-Policy", "script-src 'self' 'unsafe-eval' https://ff.kis.v2.scr.kaspersky-labs.com wss://ff.kis.v2.scr.kaspersky-labs.com");
-    next();
-  });
-
   // Validation Pipes
   app.useGlobalPipes(new ValidationPipe());
 
@@ -32,6 +26,12 @@ async function bootstrap() {
   const { httpAdapter } = app.get(HttpAdapterHost);
   app.useGlobalFilters(new ExceptionsFilter(httpAdapter)); 
 
+  app.use(
+    helmet({
+      contentSecurityPolicy:
+        process.env.NODE_ENV === 'production' ? undefined : false,
+    }),
+  );
 
   // Allow dependency injection in validators
   // useContainer(app.select(AppModule), { fallbackOnErrors: true });
