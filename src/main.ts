@@ -19,6 +19,8 @@ async function bootstrap() {
     logger: env === 'development'? ['log','debug', 'error', 'verbose', 'warn'] : ['error','warn']
   });
 
+  app.enableCors();
+
   // Validation Pipes
   app.useGlobalPipes(new ValidationPipe());
 
