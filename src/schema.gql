@@ -1,0 +1,158 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type categories {
+  id: Int!
+  name: String!
+  description: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type products {
+  id: Int!
+  name: String!
+  price: Float!
+  description: String!
+  stockQuantity: Float!
+  category: categories
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+}
+
+type users {
+  """User ID"""
+  id: String!
+
+  """User Email"""
+  email: String!
+
+  """User Name"""
+  name: String!
+
+  """User Address"""
+  address: String!
+
+  """User PhoneNo"""
+  phoneNo: String!
+
+  """Check if admin"""
+  isAdmin: Boolean!
+  isActive: Boolean!
+
+  """Check Email Verification"""
+  emailVerifiedAt: DateTime
+  created_on: DateTime!
+  updated_on: DateTime!
+}
+
+type Bindings {
+  isActive: Boolean!
+  isVerified: Boolean!
+}
+
+type UserResponseInterface {
+  user: users!
+  bindings: Bindings!
+}
+
+type AuthenticatedUserResponseInterface {
+  token: String!
+  user: users!
+  bindings: Bindings!
+}
+
+type Query {
+  findUser(id: String, email: String): UserResponseInterface!
+  test: String!
+  findProductById(id: Float!): products!
+  findAllProductPaginated(paginate: PaginateInput!): JSONObject!
+  findCategoryByID(id: Float!): categories!
+  findCategoriesPaginated(paginate: PaginateInput!): JSONObject!
+}
+
+"""
+The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSONObject
+
+input PaginateInput {
+  page: Int! = 1
+  limit: Int! = 10
+  sortBy: [[String!]!]
+  search: String
+  select: [String!]
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): users!
+  login(loginInput: LoginUserInput!): AuthenticatedUserResponseInterface!
+  logout: String!
+  changePassword(newPassword: ChangePasswordInput!): String!
+  resendOTP: String!
+  deleteUser: String!
+  confirmOTP(otp: Float!): String!
+  createProduct(createProductInput: ProductInput!): products!
+  updateProduct(id: Float!, updateProductInput: ProductInput!): products!
+  deleteProduct(id: Float!): String!
+  createCategory(categoryCreateInput: CategoryInput!): categories!
+  updateCategory(CategoryInput: CategoryInput!, id: Float!): categories!
+  deleteCategory(id: Float!): String!
+}
+
+input CreateUserInput {
+  """User Email"""
+  email: String!
+
+  """User Name"""
+  name: String!
+
+  """User Password"""
+  password: String!
+
+  """User Address"""
+  address: String!
+
+  """User PhoneNo"""
+  phoneNo: String!
+
+  """IsAdmin Check"""
+  isAdmin: Boolean!
+}
+
+input LoginUserInput {
+  """User Email"""
+  email: String!
+
+  """User Password"""
+  password: String!
+}
+
+input ChangePasswordInput {
+  """New User Password"""
+  newPassword: String!
+}
+
+input ProductInput {
+  name: String!
+  price: Float!
+  description: String!
+  stockQuantity: Float!
+  categoryId: Float
+}
+
+input CategoryInput {
+  """Category name"""
+  name: String!
+
+  """Category description"""
+  description: String
+}
