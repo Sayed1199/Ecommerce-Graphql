@@ -2,6 +2,9 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
+<p>Nestjs Graphql Ecommerce app supporting sockets,logging,auth,mailing and crud</p>
+<p>The Graph documentation can be found here <a href="https://bizarre-sibilla-sayed1199-69bfe1ee.koyeb.app/graphql">Documentation</a></p>
+
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
