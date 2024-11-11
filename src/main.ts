@@ -40,7 +40,7 @@ async function bootstrap() {
   // );
 
   if(env === "production"){
-    app.use(compression()).use(helmet());
+    // app.use(compression()).use(helmet());
   }
 
   process.on('uncaughtException', function (err) {
