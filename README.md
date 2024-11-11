@@ -1,5 +1,5 @@
 <p>Nestjs Graphql Ecommerce app supporting sockets,logging,auth,mailing and crud</p>
-<h1>Copy this url to postman to view and work with the graph schema <p>https://bizarre-sibilla-sayed1199-69bfe1ee.koyeb.app/graphql</p></h1>
+<h1>The Graphql documentation can be found here <a href="https://bizarre-sibilla-sayed1199-69bfe1ee.koyeb.app/graphql">Documentation</a> </h1>
 
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
