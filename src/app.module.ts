@@ -37,6 +37,8 @@ dotenv.config()
 
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      debug: true,
+      playground: true,
       driver: ApolloDriver,
       context: ({ req }) => ({ req }), 
     }),
